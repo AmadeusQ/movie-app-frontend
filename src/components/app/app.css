@@ -1,0 +1,37 @@
+:root {
+  --cDarkGray: #1a1a1d;
+  --cGray: #4e4e50;
+  --cDarkCherry: #6f2232;
+  --cCherry: #950740;
+  --cRed: #c3073f;
+  --cWhiteText: #cccccc;
+  --c1: #000;
+  --c2: #000000;
+  --c3: #cccccc;
+  --c4: #34bfc8;
+  --c5: #34166c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.app {
+}
+
+.container {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(90deg, var(--c4), var(--c5));
+}
+
+p {
+  color: var(--c3);
+}

@@ -1,0 +1,119 @@
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 1140px;
+  }
+
+  .movieList {
+    gap: 50px;
+  }
+
+  .movieCard {
+    width: 225px;
+    height: 410px;
+  }
+
+  .moviePoster {
+    width: 100%;
+    height: 338px;
+  }
+
+  .movieInfo {
+    width: 85%;
+    height: 72px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 960px;
+  }
+
+  .movieList {
+    gap: 80px;
+  }
+
+  .movieCard {
+    width: 250px;
+    height: 455px;
+  }
+
+  .moviePoster {
+    width: 100%;
+    height: 375px;
+  }
+
+  .movieInfo {
+    width: 85%;
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    width: 720px;
+  }
+
+  .movieList {
+    gap: 40px;
+  }
+
+  .movieCard {
+    width: 225px;
+    height: 410px;
+  }
+
+  .moviePoster {
+    width: 100%;
+    height: 338px;
+  }
+
+  .movieInfo {
+    width: 85%;
+    height: 72px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 540px;
+  }
+
+  .movieList {
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .genresPanel {
+    display: none !important;
+  }
+
+  .leftMoviePanel {
+    width: 100%;
+  }
+
+  .rightMoviePanel {
+    width: 0%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+
+  .movieList {
+    justify-content: center;
+  }
+
+  .logo {
+    width: 56px;
+  }
+
+  .logoText {
+    font-size: 40px;
+  }
+
+  .profileLogo {
+    width: 48px;
+}
+}

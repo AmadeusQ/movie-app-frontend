@@ -1,0 +1,40 @@
+.profile {
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.menuItem {
+    text-decoration: none;
+    color: var(--cWhiteText)
+}
+
+
+.profileLink {
+
+}
+
+.editProfile {
+
+}
+
+.logout {
+    
+}
+
+.profileLogo {
+    width: 64px;
+    filter: invert(50%)
+}
+
+.profileLogo:hover {
+    cursor: pointer;
+}

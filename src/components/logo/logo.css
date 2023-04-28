@@ -1,0 +1,15 @@
+.homeLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 80px;
+}
+
+.logoText {
+  font-size: 60px;
+  margin-left: 15px;
+  font-weight: bold;
+}
