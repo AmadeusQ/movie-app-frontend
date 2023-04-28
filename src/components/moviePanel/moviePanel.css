@@ -1,0 +1,17 @@
+.moviePanel {
+  margin: 30px 0;
+}
+
+.botPanel {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.rightMoviePanel {
+    width: 25%;
+}
+
+.leftMoviePanel {
+  width: 75%;
+}

@@ -1,0 +1,43 @@
+.movieBlock {
+  display: flex;
+  margin: 50px;
+}
+
+.moviePosterBlock {
+  width: 300px;
+  height: 440px;
+}
+
+.movieInfoBlock {
+  margin: 0 100px;
+}
+
+.movieInfoBlock p {
+  margin-bottom: 35px;
+  color: var(--cWhiteText);
+}
+
+.movieTitleInfo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.movieDescriptionInfo {
+  font-size: 20px;
+}
+
+.movieActorsInfo {
+  font-size: 20px;
+}
+
+.movieGenresInfo {
+  font-size: 20px;
+}
+
+.movieReleaseYearInfo {
+  font-size: 20px;
+}
+
+.movieDurationInfo {
+  font-size: 20px;
+}
