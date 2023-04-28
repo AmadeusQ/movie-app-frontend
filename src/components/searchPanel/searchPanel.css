@@ -1,0 +1,25 @@
+.searchPanel {
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  border-radius: 20px;
+  padding: 13px 20px;
+  /* background: var(--cCherry); */
+  background-color: var(--c2);
+  border: none;
+  outline: none;
+  /* color: var(--cWhiteText); */
+  color: var(--c3);
+  font-size: 20px;
+}
+
+.searchInput::placeholder {
+  color: var(--c3);
+}
+
+.searchInput:active {
+  border: none;
+  outline: none;
+}
