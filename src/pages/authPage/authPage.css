@@ -1,0 +1,30 @@
+.authPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px
+}
+
+.changeAuthTypeBtns {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.changeAuthTypeBtns button {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.changeAuthTypeBtns button:hover {
+    cursor: pointer;
+}
