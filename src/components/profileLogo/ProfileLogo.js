@@ -12,10 +12,10 @@ function ProfileLogo() {
 
   const logout = async () => {
     localStorage.setItem("token", "");
-    const res = await axios.post("http://localhost:8080/api/auth/logout", {
+    localStorage.setItem("userId", null);
+    await axios.post("http://localhost:8080/api/auth/logout", {
       userId: 3,
     });
-    console.log(res);
   };
 
   return (
@@ -34,8 +34,8 @@ function ProfileLogo() {
             </a>
           </li>
           <li>
-            <a href="/profile" className="menuItem editProfile">
-              Edit
+            <a href="/profile/delete" className="menuItem deleteProfile">
+              Delete
             </a>
           </li>
           <li>

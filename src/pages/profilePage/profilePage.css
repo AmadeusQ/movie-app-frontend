@@ -1,0 +1,32 @@
+.profilePage {
+  margin-bottom: 30px;
+}
+
+.userameProfile {
+    margin: 20px 0;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.showMovieListBtns {
+  display: flex;
+  margin: 20px 0;
+}
+
+.showMovieListBtns button {
+  margin-right: 20px;
+  width: 150px;
+  height: 34px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+.showMovieListBtns button:hover {
+  cursor: pointer;
+  color: #9a9696;
+}
+
+.activeBtn {
+  background-color: #333333;
+}
