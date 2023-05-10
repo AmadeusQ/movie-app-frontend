@@ -3,9 +3,7 @@
   flex-direction: column;
   width: 250px;
   height: 455px;
-  /* border-radius: 10px; */
   overflow: hidden;
-  /* background-color: var(--cCherry); */
   background-color: var(--c2);
   text-decoration: none;
   transition: all 0.2s ease;
@@ -28,7 +26,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* color: var(--cWhiteText); */
   color: var(--c3);
 }
 

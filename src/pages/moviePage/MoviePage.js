@@ -4,7 +4,8 @@ import MovieInfo from "../../components/movieInfo";
 import VideoPlayer from "../../components/videoPlayer/VideoPlayer";
 import "./moviePage.css";
 
-function MoviePage() {
+function MoviePage(props) {
+  const { currentUserId } = props;
   const movieId = window.location.href.split("movies/")[1];
   const [movie, setMovie] = useState({});
   const [movieActors, setMovieActors] = useState([]);
@@ -16,16 +17,8 @@ function MoviePage() {
         `http://localhost:8080/api/movies/${movieId}`
       );
       setMovie(movieData.data);
-
-      const movieActorsData = await axios.get(
-        `http://localhost:8080/api/movies/${movieId}/actors`
-      );
-      setMovieActors(movieActorsData.data);
-
-      const movieGenresData = await axios.get(
-        `http://localhost:8080/api/movies/${movieId}/genres`
-      );
-      setMovieGenres(movieGenresData.data);
+      setMovieActors(movieData.data.actors);
+      setMovieGenres(movieData.data.genres);
     }
     getMovieData();
   }, [movieId]);
@@ -33,6 +26,7 @@ function MoviePage() {
   return (
     <div className="moviePage">
       <MovieInfo
+        movieId={movieId}
         movie={movie}
         movieActors={movieActors}
         movieGenres={movieGenres}

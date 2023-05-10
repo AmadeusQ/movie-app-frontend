@@ -3,9 +3,43 @@
   margin: 50px;
 }
 
-.moviePosterBlock {
+.moviePoster2 {
   width: 300px;
   height: 440px;
+}
+
+.addToListBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.addToListBtns button {
+  height: 34px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+.addToListBtns button:hover {
+  cursor: pointer;
+  color: #9a9696;
+}
+
+.msg {
+  width: 100%;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.successAdd {
+  color: rgb(5, 89, 5)
+}
+
+.errorAdd {
+  color: rgb(186, 2, 2);
 }
 
 .movieInfoBlock {
