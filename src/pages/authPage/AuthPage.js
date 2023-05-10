@@ -1,31 +1,16 @@
-import { useState } from "react";
 import AuthForm from "../../components/authForm/AuthForm";
 import "./authPage.css";
 
 function AuthPage(props) {
-  const [type, setType] = useState("Login");
-  const { setIsLogged } = props;
+  const { setIsLogged, setCurrentUserId } = props;
 
   return (
     <div className="authPage">
       <div className="authForm">
-        <div className="changeAuthTypeBtns">
-          <button
-            onClick={() => {
-              setType("Login");
-            }}
-          >
-            Login
-          </button>
-          <button
-            onClick={() => {
-              setType("Register");
-            }}
-          >
-            Register
-          </button>
-        </div>
-        <AuthForm type={type} setIsLogged={setIsLogged}/>
+        <AuthForm
+          setIsLogged={setIsLogged}
+          setCurrentUserId={setCurrentUserId}
+        />
       </div>
     </div>
   );

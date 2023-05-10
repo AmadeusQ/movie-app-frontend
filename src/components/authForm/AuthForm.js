@@ -1,15 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import "./authForm.css";
 
 function AuthForm(props) {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { type, setIsLogged } = props;
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const [error, setError] = useState("");
+  const { setIsLogged, setCurrentUserId } = props;
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -19,61 +16,67 @@ function AuthForm(props) {
     setPassword(e.target.value);
   };
 
-  const registerUser = async (email, username, password) => {
+  const registerUser = async (username, password) => {
     const { data } = await axios.post(
       "http://localhost:8080/api/auth/register",
       {
-        email,
-        name: username,
+        username,
         password,
       }
     );
     localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.userId);
+
+    setCurrentUserId(data.userId);
     setIsLogged(localStorage.getItem("token"));
   };
 
-  const loginUser = async (email, password) => {
+  const loginUser = async (username, password) => {
     const { data } = await axios.post("http://localhost:8080/api/auth/login", {
-      email,
+      username,
       password,
     });
     localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.userId);
+
+    setCurrentUserId(data.userId);
     setIsLogged(localStorage.getItem("token"));
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    loginUser(email, password);
+    try {
+      await loginUser(username, password);
+      setError(null);
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+    }
   };
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    await registerUser(email, username, password);
+    try {
+      await registerUser(username, password);
+      setError(null);
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+    }
   };
 
   return (
     <form>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="username">Username:</label>
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleUsernameChange}
         />
       </div>
-      {type === "Register" && (
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </div>
-      )}
       <div>
         <label htmlFor="password">Password:</label>
         <input
@@ -83,12 +86,15 @@ function AuthForm(props) {
           onChange={handlePasswordChange}
         />
       </div>
-      <button
-        type="submit"
-        onClick={type === "Login" ? handleLoginSubmit : handleRegisterSubmit}
-      >
-        {type}
-      </button>
+      {error && <div className="authError">{error}</div>}
+      <div className="authBtns">
+        <button type="submit" onClick={handleLoginSubmit}>
+          Login
+        </button>
+        <button type="submit" onClick={handleRegisterSubmit}>
+          Register
+        </button>
+      </div>
     </form>
   );
 }
