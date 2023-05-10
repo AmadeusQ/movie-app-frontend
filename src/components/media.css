@@ -8,13 +8,13 @@
   }
 
   .movieCard {
-    width: 225px;
+    width: 250px;
     height: 410px;
   }
 
   .moviePoster {
     width: 100%;
-    height: 338px;
+    height: 375px;
   }
 
   .movieInfo {
@@ -93,6 +93,16 @@
 
   .rightMoviePanel {
     width: 0%;
+  }
+
+  .movieBlock {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movieInfoBlock {
+    margin: 0;
+    margin-top: 30px;
   }
 }
 

@@ -12,20 +12,65 @@ import ProfilePage from "../../pages/profilePage";
 import Header from "../header/Header";
 import "../media.css";
 import { useState } from "react";
+import DeleteProfilePage from "../../pages/deleteProfilePage/DeleteProfilePage";
 
 function App() {
   const [isLogged, setIsLogged] = useState(localStorage.getItem("token") || "");
+  const [currentUserId, setCurrentUserId] = useState(
+    localStorage.getItem("userId") || null
+  );
   return (
     <Router>
       <div className="app">
-        {isLogged && <Header setIsLogged={setIsLogged}/>}
+        {isLogged && <Header setIsLogged={setIsLogged} />}
         <Routes>
-          {!isLogged && <Route path="/auth" element={<AuthPage setIsLogged={setIsLogged}/>} />}
-          {isLogged && <Route path="/movies" element={<HomePage />} />}
-          {isLogged && <Route path="/movies/:id" element={<MoviePage />} />}
-          {isLogged && <Route path="/profile" element={<ProfilePage />} />}
-          {!isLogged && <Route path="*" element={<Navigate replace to="/auth" />} />}
-          {isLogged && <Route path="*" element={<Navigate replace to="/movies" />} />}
+          {!isLogged && (
+            <Route
+              path="/auth"
+              element={
+                <AuthPage
+                  setIsLogged={setIsLogged}
+                  setCurrentUserId={setCurrentUserId}
+                />
+              }
+            />
+          )}
+          {isLogged && (
+            <Route
+              path="/movies"
+              element={<HomePage currentUserId={currentUserId} />}
+            />
+          )}
+          {isLogged && (
+            <Route
+              path="/movies/:id"
+              element={<MoviePage currentUserId={currentUserId} />}
+            />
+          )}
+          {isLogged && (
+            <Route
+              path="/profile"
+              element={<ProfilePage currentUserId={currentUserId} />}
+            />
+          )}
+          {isLogged && (
+            <Route
+              path="/profile/delete"
+              element={
+                <DeleteProfilePage
+                  currentUserId={currentUserId}
+                  setIsLogged={setIsLogged}
+                  setCurrentUserId={setCurrentUserId}
+                />
+              }
+            />
+          )}
+          {!isLogged && (
+            <Route path="*" element={<Navigate replace to="/auth" />} />
+          )}
+          {isLogged && (
+            <Route path="*" element={<Navigate replace to="/movies" />} />
+          )}
         </Routes>
       </div>
     </Router>
@@ -33,13 +78,3 @@ function App() {
 }
 
 export default App;
-
-/*
-<Routes>
-        <Route path="/home" element={<HomePage />}/>
-        <Route path="/movie/:name" element={<MoviePage />}/>
-        <Route path="/profile" element={<ProfilePage />}/>
-
-        <Route path="*" element={<Navigate replace to="/home" />} />
-      </Routes>
-*/

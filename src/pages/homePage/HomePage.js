@@ -1,10 +1,11 @@
 import MoviePanel from "../../components/moviePanel";
 import "./homePage.css";
 
-function HomePage() {
+function HomePage(props) {
+  const { currentUserId } = props;
   return (
     <div>
-      <MoviePanel />
+      <MoviePanel currentUserId={currentUserId} />
     </div>
   );
 }

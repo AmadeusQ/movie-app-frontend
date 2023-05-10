@@ -9,9 +9,9 @@ function VideoPlayer(props) {
         url={movieUrl}
         controls={true}
         playing={false}
+        volume={0.5}
         width="960px"
         height="540px"
-        volume={0.5}
       />
     </div>
   );
