@@ -1,25 +1,17 @@
 .searchPanel {
-  width: 100%;
+  margin-bottom: 20px;
 }
 
 .searchInput {
   width: 100%;
-  border-radius: 20px;
-  padding: 13px 20px;
-  /* background: var(--cCherry); */
+  padding: 10px;
   background-color: var(--c2);
-  border: none;
-  outline: none;
-  /* color: var(--cWhiteText); */
-  color: var(--c3);
-  font-size: 20px;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .searchInput::placeholder {
   color: var(--c3);
-}
-
-.searchInput:active {
-  border: none;
-  outline: none;
 }

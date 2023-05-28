@@ -13,26 +13,26 @@ import Header from "../header/Header";
 import "../media.css";
 import { useState } from "react";
 import DeleteProfilePage from "../../pages/deleteProfilePage/DeleteProfilePage";
+import AdminPage from "../../pages/adminPage/AdminPage";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(localStorage.getItem("token") || "");
+  const isLogged = useSelector((state) => state.isLogged);
   const [currentUserId, setCurrentUserId] = useState(
     localStorage.getItem("userId") || null
+  );
+  const [isAdmin, setIsAdmin] = useState(
+    localStorage.getItem("userRole") || ""
   );
   return (
     <Router>
       <div className="app">
-        {isLogged && <Header setIsLogged={setIsLogged} />}
+        {isLogged && <Header />}
         <Routes>
           {!isLogged && (
             <Route
               path="/auth"
-              element={
-                <AuthPage
-                  setIsLogged={setIsLogged}
-                  setCurrentUserId={setCurrentUserId}
-                />
-              }
+              element={<AuthPage setCurrentUserId={setCurrentUserId} />}
             />
           )}
           {isLogged && (
@@ -59,7 +59,17 @@ function App() {
               element={
                 <DeleteProfilePage
                   currentUserId={currentUserId}
-                  setIsLogged={setIsLogged}
+                  setCurrentUserId={setCurrentUserId}
+                />
+              }
+            />
+          )}
+          {isLogged && isAdmin && (
+            <Route
+              path="/admin"
+              element={
+                <AdminPage
+                  currentUserId={currentUserId}
                   setCurrentUserId={setCurrentUserId}
                 />
               }

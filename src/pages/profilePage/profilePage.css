@@ -15,10 +15,12 @@
 
 .showMovieListBtns button {
   margin-right: 20px;
-  width: 150px;
-  height: 34px;
-  background-color: black;
+  width: 160px;
+  height: 40px;
+  background-color: #6d75ff;
   color: white;
+  border-radius: 5px;
+  border: 1px solid #5b62ef;
   font-size: 16px;
 }
 
@@ -28,5 +30,5 @@
 }
 
 .activeBtn {
-  background-color: #333333;
+  background-color: #5260ff !important;
 }

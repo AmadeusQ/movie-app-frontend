@@ -4,15 +4,14 @@ import GenresFilterPanel from "../genresFilterPanel";
 import MovieList from "../movieList";
 import SearchPanel from "../searchPanel/SearchPanel";
 import "./moviePanel.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loadMoviesAction } from "../../actions";
 
 function MoviePanel() {
-  const [movies, setMovies] = useState([]);
+  const movies = useSelector((state) => state.movies);
+  const selectedGenreId = useSelector((state) => state.genre);
   const [searchValue, setSearchValue] = useState("");
-  const [selectedGenreId, setSelectedGenreId] = useState(null);
-
-  const onGenreSelect = (genreId) => {
-    setSelectedGenreId(genreId);
-  };
+  const dispatch = useDispatch();
 
   const onSearchValueChange = (event) => {
     setSearchValue(event.target.value);
@@ -28,10 +27,10 @@ function MoviePanel() {
       } else {
         moviesData = await axios.get("http://localhost:8080/api/movies");
       }
-      setMovies(moviesData.data);
+      dispatch(loadMoviesAction(moviesData.data));
     }
     getMoviesData();
-  }, [selectedGenreId]);
+  }, [selectedGenreId, dispatch]);
 
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -52,10 +51,7 @@ function MoviePanel() {
               <MovieList movies={filteredMovies} />
             </div>
             <div className="rightMoviePanel">
-              <GenresFilterPanel
-                selectedGenreId={selectedGenreId}
-                onGenreSelect={onGenreSelect}
-              />
+              <GenresFilterPanel selectedGenreId={selectedGenreId} />
             </div>
           </div>
         </div>

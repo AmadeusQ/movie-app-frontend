@@ -7,6 +7,7 @@ function ProfilePage(props) {
   const { currentUserId } = props;
   const [userData, setUserData] = useState({});
   const [listName, setListName] = useState("watchedlist");
+  const [activeButton, setActiveButton] = useState("watchedlist");
   useEffect(() => {
     async function getUserData() {
       const { data } = await axios.get(
@@ -19,6 +20,7 @@ function ProfilePage(props) {
 
   function handleBtnClick(listName) {
     setListName(listName);
+    setActiveButton(listName);
   }
   return (
     <div className="profilePage">
@@ -29,6 +31,7 @@ function ProfilePage(props) {
             onClick={() => {
               handleBtnClick("watchedlist");
             }}
+            className={activeButton === "watchedlist" ? "activeBtn" : ""}
           >
             WatchedList
           </button>
@@ -36,6 +39,7 @@ function ProfilePage(props) {
             onClick={() => {
               handleBtnClick("watchlist");
             }}
+            className={activeButton === "watchlist" ? "activeBtn" : ""}
           >
             WatchList
           </button>
@@ -43,6 +47,7 @@ function ProfilePage(props) {
             onClick={() => {
               handleBtnClick("favorite");
             }}
+            className={activeButton === "favorite" ? "activeBtn" : ""}
           >
             Favorite
           </button>

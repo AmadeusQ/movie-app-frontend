@@ -1,14 +1,19 @@
 import axios from "axios";
 import React from "react";
+import "./deleteProfilePage.css";
+import { useDispatch } from "react-redux";
+import { signOutAction } from "../../actions";
 
 function DeleteProfilePage(props) {
-  const { currentUserId, setIsLogged, setCurrentUserId } = props;
+  const { currentUserId, setCurrentUserId } = props;
+  const dispatch = useDispatch();
 
   async function deleteProfile(currentUserId) {
     await axios.delete(`http://localhost:8080/api/users/id/${currentUserId}`);
-    setIsLogged("");
+    dispatch(signOutAction());
     localStorage.setItem("token", "");
     setCurrentUserId(null);
+    localStorage.setItem("userRole", null);
   }
 
   async function handleDeleteBtnClick(e) {

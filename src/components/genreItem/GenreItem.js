@@ -1,13 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
 import "./genreItem.css";
+import { selectGenreAction } from "../../actions";
 
 function GenreItem(props) {
-  const { selectedGenreId, onGenreSelect, genre } = props;
+  const { genre } = props;
+  const selectedGenreId = useSelector((state) => state.genre);
+  const dispatch = useDispatch();
 
   const onStatusChange = () => {
     if (selectedGenreId === genre.genreId) {
-      onGenreSelect(null);
+      dispatch(selectGenreAction(null));
     } else {
-      onGenreSelect(genre.genreId);
+      dispatch(selectGenreAction(genre.genreId));
     }
   };
   return (

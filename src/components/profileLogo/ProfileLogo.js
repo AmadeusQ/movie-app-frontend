@@ -2,9 +2,12 @@ import "./profileLogo.css";
 import profileLogo from "../../assets/images/profileLogo.png";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { signOutAction } from "../../actions";
 
 function ProfileLogo() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,10 +15,12 @@ function ProfileLogo() {
 
   const logout = async () => {
     localStorage.setItem("token", "");
-    localStorage.setItem("userId", null);
-    await axios.post("http://localhost:8080/api/auth/logout", {
-      userId: 3,
+    await axios.post("http://localhost:8081/api/auth/logout", {
+      userId: localStorage.getItem("userId"),
     });
+    dispatch(signOutAction);
+    localStorage.setItem("userId", null);
+    localStorage.setItem("userRole", "");
   };
 
   return (

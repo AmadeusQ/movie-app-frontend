@@ -24,7 +24,7 @@ function MoviePage(props) {
   }, [movieId]);
 
   return (
-    <div className="moviePage">
+    <div className="moviePage container">
       <MovieInfo
         movieId={movieId}
         movie={movie}

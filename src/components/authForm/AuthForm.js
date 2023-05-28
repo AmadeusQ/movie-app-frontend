@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import { signInAction } from "../../actions";
+import { useDispatch } from "react-redux";
 import "./authForm.css";
 
 function AuthForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setIsLogged, setCurrentUserId } = props;
+  const { setCurrentUserId } = props;
+  const dispatch = useDispatch();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -18,7 +21,7 @@ function AuthForm(props) {
 
   const registerUser = async (username, password) => {
     const { data } = await axios.post(
-      "http://localhost:8080/api/auth/register",
+      "http://localhost:8081/api/auth/register",
       {
         username,
         password,
@@ -26,21 +29,23 @@ function AuthForm(props) {
     );
     localStorage.setItem("token", data.token);
     localStorage.setItem("userId", data.userId);
+    localStorage.setItem("userRole", data.userRole);
 
     setCurrentUserId(data.userId);
-    setIsLogged(localStorage.getItem("token"));
+    dispatch(signInAction());
   };
 
   const loginUser = async (username, password) => {
-    const { data } = await axios.post("http://localhost:8080/api/auth/login", {
+    const { data } = await axios.post("http://localhost:8081/api/auth/login", {
       username,
       password,
     });
     localStorage.setItem("token", data.token);
     localStorage.setItem("userId", data.userId);
+    localStorage.setItem("userRole", data.userRole);
 
     setCurrentUserId(data.userId);
-    setIsLogged(localStorage.getItem("token"));
+    dispatch(signInAction());
   };
 
   const handleLoginSubmit = async (e) => {
@@ -67,7 +72,7 @@ function AuthForm(props) {
   };
 
   return (
-    <form>
+    <form className="authForm">
       <div>
         <label htmlFor="username">Username:</label>
         <input
