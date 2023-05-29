@@ -1,20 +1,20 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import GenresFilterPanel from "../genresFilterPanel";
 import MovieList from "../movieList";
 import SearchPanel from "../searchPanel/SearchPanel";
 import "./moviePanel.css";
 import { useDispatch, useSelector } from "react-redux";
-import { loadMoviesAction } from "../../actions";
+import { loadMoviesAction, searchChangeAction } from "../../actions";
 
 function MoviePanel() {
   const movies = useSelector((state) => state.movies);
   const selectedGenreId = useSelector((state) => state.genre);
-  const [searchValue, setSearchValue] = useState("");
+  const searchValue = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   const onSearchValueChange = (event) => {
-    setSearchValue(event.target.value);
+    dispatch(searchChangeAction(event.target.value));
   };
 
   useEffect(() => {

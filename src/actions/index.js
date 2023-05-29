@@ -23,3 +23,10 @@ export const selectGenreAction = (genreId) => {
     payload: genreId,
   };
 };
+
+export const searchChangeAction = (searchValue) => {
+  return {
+    type: "SEARCH_CHANGE",
+    payload: searchValue,
+  };
+};
